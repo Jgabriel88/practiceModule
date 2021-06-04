@@ -1,11 +1,10 @@
-import logo from './logo.svg';
 import './App.css';
-import MainForm from './components/MainForm';
+import AddUser from './components/Users/AddUser';
 
 function App() {
 	return (
 		<div>
-			<MainForm />
+			<AddUser />
 		</div>
 	);
 }
