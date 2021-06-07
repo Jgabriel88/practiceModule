@@ -7,8 +7,7 @@ import styles from './AddUser.module.css';
 const AddUser = (props) => {
 	const nameInputRef = useRef();
 	const ageInputRef = useRef();
-	const [enteredUserName, setEnteredUserName] = useState('');
-	const [enteredAge, setEnteredAge] = useState('');
+
 	const [error, setError] = useState();
 
 	const addUserHandler = (event) => {
@@ -33,16 +32,8 @@ const AddUser = (props) => {
 			return;
 		}
 		props.onAddUSer(submittedName, submitteddAge);
-		setEnteredUserName('');
-		setEnteredAge('');
-	};
-
-	const userNameChangeHandler = (event) => {
-		setEnteredUserName(event.target.value);
-	};
-
-	const ageChangeHandler = (event) => {
-		setEnteredAge(event.target.value);
+		nameInputRef.current.value = '';
+		ageInputRef.current.value = '';
 	};
 
 	const errorHandler = () => {
@@ -60,19 +51,9 @@ const AddUser = (props) => {
 			<Card className={styles.input}>
 				<form onSubmit={addUserHandler}>
 					<label htmlFor="username">Username</label>
-					<input
-						id="username"
-						type="text"
-						value={enteredUserName}
-						onChange={userNameChangeHandler}
-						ref={nameInputRef}></input>
+					<input id="username" type="text" ref={nameInputRef}></input>
 					<label htmlFor="age">Age (Years) </label>
-					<input
-						id="age"
-						type="number"
-						value={enteredAge}
-						onChange={ageChangeHandler}
-						ref={ageInputRef}></input>
+					<input id="age" type="number" ref={ageInputRef}></input>
 					<Button type="submit">Add User</Button>
 				</form>
 			</Card>
